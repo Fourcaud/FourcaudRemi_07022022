@@ -1,0 +1,26 @@
+$font-1: "Avenir, Helvetica, Arial", sans-serif;
+
+$color-1: white;
+$color-2: #12002b;
+$color-3: #00bc77;
+$color-4: #2c3e50;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $font-1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: $color-4;
+}
+
+body {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
