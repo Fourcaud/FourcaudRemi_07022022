@@ -1,4 +1,5 @@
 import React from "react";
+import Axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,31 +10,33 @@ import { getUser, SET_TOKEN } from "../actions/user.actions";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const getToken = (e) => {
     e.preventDefault();
-    fetch(`${process.env.REACT_APP_API_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: email, password: password }),
-    })
-      .then((response) => response.json())
+
+    const bodyParameters = {
+      email: email,
+      password: password,
+    };
+    Axios.post(`${process.env.REACT_APP_API_URL}/login`, bodyParameters, {})
       .then((result) => {
         dispatch({
           type: SET_TOKEN,
-          payload: result.body.token,
+          payload: result.data.body.token,
         });
-        dispatch(getUser(result.body.token));
+        dispatch(getUser(result.data.body.token));
+        setError(false);
         navigate("/profile");
       })
-      .catch((error) => {
-        console.error("error", error);
+      .catch((err) => {
+        setError(true);
+        console.log(err);
       });
   };
+
   return (
     <div className="container">
       <div className="container__modal">
@@ -61,6 +64,9 @@ const Login = () => {
             <div className="checkbox">
               <input type="checkbox" id="remember-me" name="remember-me" />
               <label for="remember-me">Remember Me</label>
+            </div>
+            <div className={"input-error " + (error ? " " : "sr-only")}>
+              Email or password invalid
             </div>
 
             <input type="submit" value="Sign in" className="btn-submit" />
