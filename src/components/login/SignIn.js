@@ -1,7 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUnlock, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightFromBracket,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { logOut } from "../../actions/user.actions";
 
@@ -13,11 +16,13 @@ const SignIn = () => {
   const signOut = () => {
     dispatch(logOut());
   };
+
   const linkToProfile = (
     <div className="login">
-      <FontAwesomeIcon icon={faUnlock} className="icon" />
+      <FontAwesomeIcon icon={faUser} className="icon" />
+      {first}
+      <FontAwesomeIcon icon={faArrowRightFromBracket} className="icon" />
       <Link to="/profile" className="btn-signin" onClick={() => signOut()}>
-        {first}
         <p>Sign Out</p>
       </Link>
     </div>

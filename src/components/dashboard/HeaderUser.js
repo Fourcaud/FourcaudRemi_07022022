@@ -40,7 +40,7 @@ function HeaderUser() {
   };
 
   return (
-    <div>
+    <div className="header-edit {">
       <h1>
         Welcome back
         <br />

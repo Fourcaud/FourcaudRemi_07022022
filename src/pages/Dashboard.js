@@ -8,10 +8,9 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const logIn = useSelector((state) => state.userReducer.isLogIn);
-  console.log(logIn);
 
   useEffect(() => {
-    if (logIn === null || logIn === undefined || !logIn) {
+    if (!logIn) {
       return navigate("/");
     }
   });

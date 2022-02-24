@@ -2,7 +2,7 @@ import data from "../../assets/data-account.json";
 
 function Accounts() {
   return (
-    <>
+    <div>
       <h2 className="sr-only">Accounts</h2>
       {data.map((elt) => (
         <section className="account" key={elt.id}>
@@ -16,7 +16,7 @@ function Accounts() {
           </div>
         </section>
       ))}
-    </>
+    </div>
   );
 }
 
