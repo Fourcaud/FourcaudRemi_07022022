@@ -7,19 +7,8 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
-import { getUser } from "./actions/user.actions";
 
 function App() {
-  const dispatch = useDispatch();
-
-  const token = localStorage.getItem("jwt");
-
-  useEffect(() => {
-    if (token != null) {
-      dispatch(getUser(token));
-    }
-  }, [token, dispatch]);
-
   return (
     <Router>
       <Header />
