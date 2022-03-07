@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Dashboard from "./pages/Dashboard";
